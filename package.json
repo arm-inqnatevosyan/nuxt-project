@@ -13,10 +13,14 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.4.0",
     "bootstrap": "^4.3.1",
+    "cookie-universal-nuxt": "^2.2.2",
+    "cors": "^2.8.5",
     "cross-env": "^5.2.0",
+    "js-cookie": "^3.0.1",
     "nuxt": "^2.4.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.18.9",
     "nodemon": "^1.18.9"
   }
 }

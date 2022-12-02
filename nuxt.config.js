@@ -40,10 +40,38 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-    '@nuxtjs/axios'
+   ssr: true,
+  target: 'server',
+
+   modules: [
+    '@nuxtjs/axios',
+
+     'cookie-universal-nuxt',
+
+    // With options
+    ['cookie-universal-nuxt', { alias: 'cookiz' }], 
   ],
 
+  axios: {
+    baseURL: 'http://localhost:8000', // Used as fallback if no runtime config is provided
+  },
+
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: process.env.BROWSER_BASE_URL
+    }
+  },
+
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASE_URL
+    }
+  },
+
+  proxy: {
+  '/api/': { target: 'http://localhost:8000/', pathRewrite: {'^/api/': ''}, changeOrigin: true }
+  },
+  
   /*
   ** Build configuration
   */
@@ -56,3 +84,4 @@ module.exports = {
     }
   }
 }
+

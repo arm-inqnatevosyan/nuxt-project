@@ -8,7 +8,7 @@
       <div class="form-group">
         <input type="text" class="form-control">
       </div>
-
+      
       <p>
         <nuxt-link to="/">To home page</nuxt-link>
       </p>
@@ -19,12 +19,14 @@
 </template>
 
 <script>
+import {useStore} from "vuex";
+import {save} from "~/helper/check.js";
 export default {
   layout: 'empty',
   methods: {
     onSubmit() {
       this.$store.dispatch('login')
-      this.$router.push('/')
+      this.$router.push('/home')
     }
   }
 }
