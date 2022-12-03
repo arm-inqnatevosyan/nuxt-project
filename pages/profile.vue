@@ -1,5 +1,5 @@
 <template>    
- <div>
+ <div class="main">
   <div>
       <Profile  v-for="todo in todos" :key="todo.id" :name="todo.name" :img="todo.img" :id="todo.id" :email="todo.email"/> 
   </div>
@@ -111,3 +111,73 @@
     },
   };
 </script>
+    
+    
+    
+    
+    <style scoped>
+    .main{
+        width: 100% !important;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        margin-left:10% !important;
+        margin-top:50px;
+    }
+    .icons{
+      display:flex;
+      width:60px !important;
+      justify-content:space-between;
+      margin-right:0;
+      float:right;
+    }
+    .main div{
+      width:50%;
+      padding-left:10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .main img{
+        height: 400px;
+        width:100%;
+        position:relative;
+    }
+    h1 {
+      text-decoration: underline;
+    }
+    .ed{
+      padding-left:10px;
+    }
+    li {
+      color: white;
+    }
+    .p{
+      display:none;
+    }
+    form{
+        display:flex;
+        justify-content: space-between;
+        width: 350px !important;
+        align-items: center;
+        height: 40px;
+        margin-top:10px;
+    }
+    form i{
+      outline:none;
+      border:none !important;
+      font-size:20px;
+      color:rgb(52, 157, 228);
+    }
+    form button{
+      height:35px;
+      width:50px;
+    }
+    form .input{
+      width:300px;
+      height:35px;
+      outline:none !important;
+      padding-left:10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    ::placeholder{
+      color:black;
+    }
+</style>

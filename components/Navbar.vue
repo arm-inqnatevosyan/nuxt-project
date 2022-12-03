@@ -1,54 +1,31 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Nuxt SSR</a>
-
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <nuxt-link exact no-prefetch active-class="active"  v-if="hasToken" class="nav-link" to="/home">
-            Home
-          </nuxt-link>
-        </li>
-        <li class="nav-item">
-          <nuxt-link active-class="active"  v-if="hasToken" class="nav-link" to="/about">
-            About
-          </nuxt-link>
-        </li>
-         <li class="nav-item">
-          <nuxt-link active-class="active"  v-if="hasToken" class="nav-link" to="/add">
-            Add Post
-          </nuxt-link>
-        </li>
-        <li class="nav-item">
-          <nuxt-link active-class="active"  v-if="hasToken" class="nav-link" to="/profile">
-            Profile
-          </nuxt-link>
-        </li>
-        <li class="nav-item" v-if="!hasToken">
-          <nuxt-link active-class="active" class="nav-link" to="/logins">
-            Login
-          </nuxt-link>
-        </li>
-        <li class="nav-item" v-if="!hasToken">
-          <nuxt-link active-class="active" class="nav-link" to="/register">
-            Register
-          </nuxt-link>
-        </li>
-        <li class="nav-item" v-else>
-          <a @click.prevent="logout" class="nav-link" href="#">
-            Logout
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <nav>
+        <NuxtLink to="/"><div class="logo"><h1>Instagram</h1></div></NuxtLink>
+        <div class="icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <NuxtLink to="/"><img src="./home.png" width="20" /></NuxtLink>
+            <NuxtLink to="/add"><img src="./comment.png" width="20" /></NuxtLink>
+            <NuxtLink to="/users"><img src="./heart.png" width="20" /></NuxtLink>
+        </div>
+        <ul>
+            <li><NuxtLink to="/" v-if="hasToken">Home</NuxtLink></li>
+            <li><NuxtLink to="/sign" v-if="!hasToken">Sign In</NuxtLink></li>
+            <li><NuxtLink to="/registr" v-if="!hasToken">Register</NuxtLink></li>
+            <li><NuxtLink to="/profile" v-if="hasToken">Profile</NuxtLink></li>
+            <li><NuxtLink to="/users" v-if="hasToken">Users</NuxtLink></li>
+            <li><NuxtLink to="/add" v-if="hasToken">Add</NuxtLink></li>
+            <li><NuxtLink to="/logout"  @click.prevent="logout">Logout</NuxtLink></li>
+        </ul>
+    </nav>
 </template>
 
 
 
 <script>
+
 import {useStore} from "vuex";
 export default {
+    name: 'NavbarVue',
   computed: {
     hasToken() {
       return this.$store.getters.hasToken
@@ -63,3 +40,45 @@ export default {
   }
 }
 </script>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+nav{
+    width:  80%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto !important;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+.logo{
+    font-family: 'Lobster', cursive;
+    width: 200px;
+}
+.icons{
+    width: 160px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+    margin-left: 120px;
+}
+.icons i{
+    font-size: 21px;
+}
+li{
+    margin-left: 20px;
+}
+a{
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: black;
+    font-size: 14px;
+}
+</style>

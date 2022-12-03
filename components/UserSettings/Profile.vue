@@ -1,5 +1,5 @@
  <template>
-    <div>
+    <div class="card">
         <img :src="`${img}`" alt="John" style="width:100%">
         <h1>{{ name }}</h1>
         <input type="file" accept="image/*" @change="onChange" />

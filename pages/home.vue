@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
   <div class="main">
     <div>
       <post @success="submitForm"  v-for="todo in todos" :key="todo.id" :author="todo.author" :description ="todo.content"  :title="todo.title"  :comments="todo.comments" :img="todo.img" :id="todo._id"/> 
@@ -53,4 +53,12 @@
         },
       };
     </script>
-  
+  <style scoped>
+    .main{
+        width: 100% !important;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        margin-left:10% !important;
+        margin-top:50px;
+    }
+</style>
